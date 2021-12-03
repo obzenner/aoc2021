@@ -1,4 +1,3 @@
-const { count } = require('console');
 const { getDataFromTxtFile } = require('./helpers/readFile')
 const input = getDataFromTxtFile('./inputs/day3.txt');
 const inputArray = input.split(/\r?\n/);
