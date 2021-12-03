@@ -40,6 +40,7 @@ const common = ({ zero, one }, mostCommon = true) => {
     return condition ? '0' : '1';
 }
 
+// PART1
 const gammaEpsilon = (input, mostCommon) => {
     return Object.keys(input).reduce((acc, curr) => {
         const commonValue = common(input[curr], mostCommon);
@@ -51,6 +52,8 @@ const epsilon = gammaEpsilon(zerosOnes, false);
 
 const part1 = parseInt(gamma, 2) * parseInt(epsilon, 2);
 
+
+// PART2
 const generatorRating = (inputArray, mostCommon, numberOfIterations, iteration) => {
     while (iteration < numberOfIterations) {
         const zeroesOnes = countZerosOnes(inputArray);
