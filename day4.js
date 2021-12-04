@@ -154,14 +154,14 @@ const bingoChecker = (card, cardSize = 5) => {
     return false;
 }
 
-const calcScore = winner => {
-    const sum = Array.from(winner.card).reduce((acc, curr) => {
+const calcScore = ({ card, number }) => {
+    const sum = Array.from(card).reduce((acc, curr) => {
         if (curr[1] !== true) {
             acc += curr[0];
         }
         return acc;
     }, 0);
-    return sum * winner.number;
+    return sum * number;
 };
 
 const runBingo = (numbers, cards, lastWinnerCard = false) => {
