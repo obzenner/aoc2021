@@ -155,7 +155,7 @@ const bingoChecker = (card, cardSize = 5) => {
 }
 
 const calcScore = ({ card, number }) => {
-    const sum = Array.from(card).reduce((acc, curr) => {
+    const sum = card.reduce((acc, curr) => {
         if (curr[1] !== true) {
             acc += curr[0];
         }
@@ -193,7 +193,7 @@ const runBingo = (numbers, cards, lastWinnerCard = false) => {
             // return final score
             if (!lastWinnerCard && isBingo) {
                 return calcScore({
-                    card: currentCard,
+                    card: Array.from(currentCard),
                     number: currentNumber
                 });
             }
@@ -207,7 +207,7 @@ const runBingo = (numbers, cards, lastWinnerCard = false) => {
         const { winnerCardId, winnerNumber } = winnerCardsObjects[lastCardIndex];
 
         return calcScore({
-            card: winnerCards.get(winnerCardId),
+            card: Array.from(winnerCards.get(winnerCardId)),
             number: winnerNumber
         })
     }
