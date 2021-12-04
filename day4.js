@@ -182,7 +182,7 @@ const runBingo = (numbers, cards, lastWinnerCard = false) => {
             // check if card has bingo'ed
             const isBingo = bingoChecker(Array.from(currentCard));
 
-            if (isBingo && !winnerCard) {
+            if (lastWinnerCard && isBingo && !winnerCard) {
                 winnerCards[j] = currentCard;
                 winnerCardsObjects = [...winnerCardsObjects, {
                     winnerCardId: j,
