@@ -165,13 +165,13 @@ const calcScore = winner => {
 };
 
 const runBingo = (numbers, cards, lastWinnerCard = false) => {
-    let winnerCards = {};
+    let winnerCards = new Map();
     let winnerCardsObjects = [];
 
     // PART1
     for (let i = 0; i < numbers.length; i++) {
         for (let j = 0; j < Object.keys(cards).length; j++) {
-            const winnerCard = winnerCards[`${j}`];
+            const winnerCard = winnerCards.get(j);
             const currentCard = cards[`${j}`];
             const currentNumber = numbers[i];
 
@@ -183,7 +183,7 @@ const runBingo = (numbers, cards, lastWinnerCard = false) => {
             const isBingo = bingoChecker(Array.from(currentCard));
 
             if (lastWinnerCard && isBingo && !winnerCard) {
-                winnerCards[j] = currentCard;
+                winnerCards.set(j, currentCard);
                 winnerCardsObjects = [...winnerCardsObjects, {
                     winnerCardId: j,
                     winnerNumber: currentNumber
@@ -207,7 +207,7 @@ const runBingo = (numbers, cards, lastWinnerCard = false) => {
         const { winnerCardId, winnerNumber } = winnerCardsObjects[lastCardIndex];
 
         return calcScore({
-            card: winnerCards[`${winnerCardId}`],
+            card: winnerCards.get(winnerCardId),
             number: winnerNumber
         })
     }
