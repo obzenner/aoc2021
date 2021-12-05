@@ -27,8 +27,6 @@ const isVerticalHorizontal = line => {
     };
 }
 
-const linesToEval = lines.filter(l => isVerticalHorizontal(l).isValid);
-
 const addCoordinate = (map, coord) => {
     const exists = map.get(coord);
 
@@ -80,7 +78,9 @@ const drawLines = (lines) => {
     return calcDangerPoints(Array.from(coords));
 }
 
-const part1 = drawLines(linesToEval);
+const linesWithoutDiagonals = lines.filter(l => isVerticalHorizontal(l).isValid);
+
+const part1 = drawLines(linesWithoutDiagonals);
 const part2 = drawLines(lines);
 
 console.log({
