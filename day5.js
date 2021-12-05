@@ -20,11 +20,7 @@ const isVerticalHorizontal = line => {
     const isVertical = x1 === x2;
     const isHorizontal = y1 === y2;
 
-    return {
-        isHorizontal,
-        isVertical,
-        isValid: isHorizontal || isVertical
-    };
+    return isHorizontal || isVertical;
 }
 
 const addCoordinate = (map, coord) => {
@@ -78,7 +74,7 @@ const drawLines = (lines) => {
     return calcDangerPoints(Array.from(coords));
 }
 
-const linesWithoutDiagonals = lines.filter(l => isVerticalHorizontal(l).isValid);
+const linesWithoutDiagonals = lines.filter(isVerticalHorizontal);
 
 const part1 = drawLines(linesWithoutDiagonals);
 const part2 = drawLines(lines);
