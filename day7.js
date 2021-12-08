@@ -25,7 +25,7 @@ const recursivelyFindBestFuel = (input, left, right, withIncrease = false) => {
     const leftShift = left + 1;
 
     if (rightShift <= 0 || leftShift <= 0) {
-        return { direction, leftFuel, rightFuel}
+        return leftFuel > rightFuel ? rightFuel : leftFuel
     }
 
 
