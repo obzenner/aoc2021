@@ -18,7 +18,6 @@ const calcFuelForPosition = (input, chosenPosition = 1, withIncrease = false) =>
 };
 
 const recursivelyFindBestFuel = (input, left, right, withIncrease = false) => {
-    console.log(left, right)
     const leftFuel = calcFuelForPosition(input, left, withIncrease);
     const rightFuel = calcFuelForPosition(input, right, withIncrease);
     const direction = rightFuel >= leftFuel ? 'left' : 'right';
@@ -38,10 +37,10 @@ const recursivelyFindBestFuel = (input, left, right, withIncrease = false) => {
 };
 
 const highest = input.sort((a, b) => b - a)[0];
-// const part1 = recursivelyFindBestFuel(input, 0, highest);
+const part1 = recursivelyFindBestFuel(input, 0, highest);
 const part2 = recursivelyFindBestFuel(input, 0, highest, true);
 
 console.log({
-    //part1,
+    part1,
     part2
 });
