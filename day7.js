@@ -42,8 +42,8 @@ const recursivelyFindBestFuel = (input, left, right, withIncrease = false) => {
 };
 
 const highest = Math.max(...input);
-// const part1 = recursivelyFindBestFuel(input, 0, highest);
-// const part2 = recursivelyFindBestFuel(input, 0, highest, true);
+const part1 = recursivelyFindBestFuel(input, 0, highest);
+const part2 = recursivelyFindBestFuel(input, 0, highest, true);
 
 const median = (arr) => {
   const mid = Math.floor(arr.length / 2),
@@ -51,9 +51,8 @@ const median = (arr) => {
   return arr.length % 2 !== 0 ? nums[mid] : (nums[mid - 1] + nums[mid]) / 2;
 };
 
-console.log(median(input))
-
-// console.log({
-//   part1,
-//   part2,
-// });
+console.log({
+  part1,
+  part1WithMedian: calcFuelForPosition(input, median(input)),
+  part2,
+});
