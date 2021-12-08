@@ -50,7 +50,10 @@ const calcUniqueSegmentsInOutputs = (outputs, stringOfSegments) => {
     return numberOfUniqueOutputs;
 }
 
-const part1 = calcUniqueSegmentsInOutputs(signalsInput.map(l => l.outputs), Object.values(SEGMENTS_PER_DIGIT).toString());
+const outputs = signalsInput.map(l => l.outputs);
+const stringOfSegmentValues = Object.values(SEGMENTS_PER_DIGIT).toString();
+
+const part1 = calcUniqueSegmentsInOutputs(outputs, stringOfSegmentValues);
 
 console.log({
     part1
