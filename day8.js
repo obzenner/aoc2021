@@ -15,7 +15,9 @@ const signalsInput = input.reduce((acc, l) => {
     return acc;
 }, []);
 
-const SEGMENTS_PER_DIGIT = {
+const sortAlphabetically = str => str.split('').sort().join('');
+
+const LETTERS_PER_DIGIT = {
     '0': 6,
     '1': 2,
     '2': 5,
@@ -26,7 +28,7 @@ const SEGMENTS_PER_DIGIT = {
     '7': 3,
     '8': 7,
     '9': 6
-};
+}
 
 const isUniqueNumberOfSegments = (numberOfSegments, stringOfSegments) => {
     const matched = stringOfSegments.match(new RegExp(`${numberOfSegments}`, 'g'));
@@ -51,7 +53,9 @@ const calcUniqueSegmentsInOutputs = (outputs, stringOfSegments) => {
 }
 
 const outputs = signalsInput.map(l => l.outputs);
-const stringOfSegmentValues = Object.values(SEGMENTS_PER_DIGIT).toString();
+const stringOfSegmentValues = Object.values(LETTERS_PER_DIGIT).reduce((acc, seg) => {
+    return acc += `${seg}`;
+}, '');
 
 const part1 = calcUniqueSegmentsInOutputs(outputs, stringOfSegmentValues);
 
