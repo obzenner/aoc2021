@@ -36,7 +36,7 @@ const recursivelyFindBestFuel = (input, left, right, withIncrease = false) => {
     }
 };
 
-const highest = input.sort((a, b) => b - a)[0];
+const highest = Math.max(...input);
 const part1 = recursivelyFindBestFuel(input, 0, highest);
 const part2 = recursivelyFindBestFuel(input, 0, highest, true);
 
