@@ -7,8 +7,11 @@ const calcScore = (diceState, playerPosition = 1, currentScore = 0, boardSize = 
         i++;
     }
 
-    const newScore = (playerPosition + sumOfThrows) % boardSize === 0 ? boardSize : (playerPosition + sumOfThrows) % boardSize;
-    const newDiceState = (diceState + 3) % diceSides === 0 ? diceSides : (diceState + 3) % diceSides;
+    const scoreModulo = (playerPosition + sumOfThrows) % boardSize;
+    const diceStateModulo = (diceState + 3) % diceSides;
+
+    const newScore = scoreModulo === 0 ? boardSize : scoreModulo;
+    const newDiceState = diceStateModulo === 0 ? diceSides : diceStateModulo;
 
     return {
         diceState: newDiceState,
