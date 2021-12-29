@@ -53,10 +53,9 @@ const round = (diceState, diceRolled, players, boardSize = 10) => {
 
 const game = (diceState = 1, diceRolled = 0, players, boardSize = 10) => {
     const highestScore = players.sort((a, b) => b.score - a.score)[0].score;
-    let newState;
 
     if (highestScore < 1000) {
-        newState = round(diceState, diceRolled, players, boardSize);
+        const newState = round(diceState, diceRolled, players, boardSize);
         return game(newState.diceState, newState.diceRolled, newState.players, boardSize);
     } else {
         return {
