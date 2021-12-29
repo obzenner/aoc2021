@@ -1,3 +1,5 @@
+const crypto = require("crypto");
+
 const calcScore = (diceState, playerPosition = 1, currentScore = 0, boardSize = 10, diceSides = 100) => {
     let i = 1;
     let sumOfThrows = diceState;
@@ -66,11 +68,11 @@ const game = (diceState = 1, diceRolled = 0, players, boardSize = 10) => {
 };
 
 const players = [{
-    id: Math.floor(Math.random() * 100 / Math.random() * 10),
+    id: crypto.randomBytes(16).toString("hex"),
     position: 4,
     score: 0
 }, {
-    id: Math.floor(Math.random() * 100 / Math.random() * 10),
+    id: crypto.randomBytes(16).toString("hex"),
     position: 6,
     score: 0
 }];
