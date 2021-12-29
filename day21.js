@@ -30,10 +30,7 @@ const round = (diceState, diceRolled, players, boardSize = 10) => {
         //  add player ids so I could filter out the ones who didn't win since we need to also know the
         //  state of prev player's at the time the game ends so we could calc the final answer
         if (playerState.currentScore >= 1000) {
-            const addedIds = updatedPlayers.reduce((acc, p) => {
-                acc = [...acc, p.id];
-                return acc;
-            }, []);
+            const addedIds = updatedPlayers.map(p => p.id);
 
             const withNotWinning = [...updatedPlayers, ...players.filter(p => addedIds.indexOf(p.id) === -1)];
             return {
